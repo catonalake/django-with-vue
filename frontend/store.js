@@ -4,5 +4,13 @@ export default store = reactive({
     token: null,
     setToken(newToken) {
         this.token = newToken
+    },
+    count: 0,
+    increment (event) {
+        if (event) {
+            event.preventDefault()
+        }
+        console.log(event)
+        this.count++
     }
 })

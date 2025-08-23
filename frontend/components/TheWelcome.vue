@@ -6,6 +6,8 @@ import EcosystemIcon from './icons/IconEcosystem.vue'
 import CommunityIcon from './icons/IconCommunity.vue'
 import SupportIcon from './icons/IconSupport.vue'
 
+import store from './../store'
+
 const openReadmeInEditor = () => fetch('/__open-in-editor?file=README.md')
 </script>
 
@@ -17,7 +19,7 @@ const openReadmeInEditor = () => fetch('/__open-in-editor?file=README.md')
     <template #heading>Documentation</template>
 
     Vue’s
-    <a href="https://vuejs.org/" target="_blank" rel="noopener">official documentation</a>
+    <a @click="store.increment"  href="https://vuejs.org/" target="_blank" rel="noopener">{{ store.token }}</a>
     provides you with all information you need to get started.
   </WelcomeItem>
 

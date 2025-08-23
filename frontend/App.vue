@@ -1,5 +1,4 @@
 <script setup>
-import {ref} from 'vue'
 import store from './store'
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
@@ -15,19 +14,14 @@ if (props.token) {
   store.setToken(props.token)
 }
 
-let count = ref(0)
-function increment(event) {
-  console.log(event)
-  count.value++
-}
 </script>
 
 <template>
   <header>
-    {{ count }} {{ store.token }} {{ user }}
+    {{ store.count }} {{ store.token }} {{ user }}
 
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" 
-    width="125" height="125" @click="increment" />
+    width="125" height="125" @click="store.increment" />
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />

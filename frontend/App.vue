@@ -1,10 +1,24 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
+const props = defineProps({
+  token: String,
+  user: String
+})
+
+console.log('props.token')
+console.log(props.token)
+const user = props.user ? props.user : ''
+const token = props.token ? props.token : null
 </script>
 
 <template>
   <header>
+  {{ props.token }}
+
+token:   {{ token }}
+user:   {{ user }}
+
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">

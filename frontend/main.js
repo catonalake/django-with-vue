@@ -8,6 +8,6 @@ if (el) {
     console.log(el.dataset)
     const data = {...el.dataset}  // < removed duplicate keys and gets all values out of an object into another object
     console.log(data)
-    // <App :token="abc" "user="some-user" />
+    // <App :token="abc" "user="some-user" />  // example of alternative in passing data
     createApp(App, data).mount('#app')
 }

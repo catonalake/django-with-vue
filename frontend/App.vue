@@ -1,4 +1,6 @@
 <script setup>
+import {ref} from 'vue'
+import store from './store'
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
 const props = defineProps({
@@ -6,20 +8,26 @@ const props = defineProps({
   user: String
 })
 
-console.log('props.token')
-console.log(props.token)
 const user = props.user ? props.user : ''
-const token = props.token ? props.token : null
+// const token = props.token ? props.token : null
+
+if (props.token) {
+  store.setToken(props.token)
+}
+
+let count = ref(0)
+function increment(event) {
+  console.log(event)
+  count.value++
+}
 </script>
 
 <template>
   <header>
-  {{ props.token }}
+    {{ count }} {{ store.token }} {{ user }}
 
-token:   {{ token }}
-user:   {{ user }}
-
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+    <img alt="Vue logo" class="logo" src="./assets/logo.svg" 
+    width="125" height="125" @click="increment" />
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />

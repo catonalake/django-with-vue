@@ -1,0 +1,4 @@
+/venv
+/local-cdn
+*.idea
+/node_modules

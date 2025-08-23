@@ -1,0 +1,22 @@
+{
+  "name": "tindall-frontend",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "scripts": {
+    "dev": "vite build --mode development --base /static/vue-dev/ --outDir ./src/static/vue-dev/ -w",
+    "build": "vite build --mode production --base /static/vue-prod/ --outDir ./src/static/vue-prod/",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.5.18"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.1",
+    "vite": "^7.0.6",
+    "vite-plugin-vue-devtools": "^8.0.0"
+  }
+}

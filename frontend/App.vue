@@ -1,6 +1,6 @@
 <script setup>
+import ApiGetRequest from './components/ApiGetRequest.vue'
 import store from './store'
-import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
 const props = defineProps({
   token: String,
@@ -18,14 +18,8 @@ if (props.token) {
 
 <template>
   <header>
-    {{ store.count }} {{ store.token }} {{ user }}
-
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" 
-    width="125" height="125" @click="store.increment" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
+    <ApiGetRequest />
+    
   </header>
 
   <main>

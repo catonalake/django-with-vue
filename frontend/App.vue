@@ -1,7 +1,6 @@
 <script setup>
 import ApiGetRequest from './components/ApiGetRequest.vue'
 import store from './store'
-import TheWelcome from './components/TheWelcome.vue'
 const props = defineProps({
   token: String,
   user: String

@@ -1,45 +1,38 @@
 <script setup>
+import axios from 'axios'
 import { ref, reactive, onMounted } from 'vue';
-let title = ref("Hello World")
-let contentList = ref([])
 
 let data = reactive({
-    subTitle: "hello hello world",
-    contentListST: []
+    title: "hello hello world",
+    contentList: []
 })
 
-// fetch('/api/posts/').then(res=>console.log(res))
 onMounted(async () =>{
-    let responseData = await fetch('/api/posts/').then(res=>{
-        if (res.status === 200) {
-            return res.json()
-        } else {
-            return "Not Found"
-        }
-    })
-    if (responseData instanceof String || typeof(responseData) === "string") {
-        title.value = responseData  + ` "ref way"` 
-        data.subTitle = responseData  + ` "reactive way"` 
-    } else {
-        title.value = "Post"
-        contentList.value = responseData.data
-        data.subTitle = "Posting"
-        data.contentListST = responseData.data
+    let response;
+    try {
+        response = await axios.get('/api/posts/')
+    } catch (error) {
+        response = error.response
+        console.error(response)
     }
-    console.log(responseData.data)
+    console.log(response)
+    if (response.status === 200) {
+        console.log(response.data)
+        let responseData = response.data
+        data.contentList = responseData.data
+        data.title = "Post"  + ` "reactive way"` 
+    } else {
+        data.title = "Not Found"
+    }
+
 })
 
 </script>
 
 <template>
     <div>
-        <h2> {{ title }}</h2>
-        <div v-for="post of contentList" :key="post.id">
-            {{ post.id }} = {{ post.title }}
-        </div>
-
-        <h2>  {{ data.subTitle }} </h2>
-        <div v-for="post of data.contentListST" :key="post.id">
+        <h2>  {{ data.title }} </h2>
+        <div v-for="post of data.contentList" :key="post.id">
             {{ post.id }} = {{ post.title }}
         </div>
 

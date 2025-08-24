@@ -8,8 +8,10 @@ Basic knowledge of Django and Vue.js
 
 Other tools:
 Yarn: (assumping npm installed)
+AXIOS (can use fetch but this is better)
 ```
 npm install --global yarn
+npm install axios
 ```
 
 # Setup Instructions

@@ -22,6 +22,7 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home_view),
+    path('api/posts/', views.api_content_list_view),
 ]
 
 if settings.DEBUG:

@@ -22,18 +22,26 @@ onMounted(async () =>{
         data.subTitle = responseData  + ` "reactive way"` 
     } else {
         title.value = "Post"
-        contentList.value = responseData
+        contentList.value = responseData.data
         data.subTitle = "Posting"
-        data.contentListST = responseData
+        data.contentListST = responseData.data
     }
-    console.log(responseData)
+    console.log(responseData.data)
 })
 
 </script>
 
 <template>
     <div>
-        <h1> {{ title }}</h1>
+        <h2> {{ title }}</h2>
+        <div v-for="post of contentList" :key="post.id">
+            {{ post.id }} = {{ post.title }}
+        </div>
+
         <h2>  {{ data.subTitle }} </h2>
+        <div v-for="post of data.contentListST" :key="post.id">
+            {{ post.id }} = {{ post.title }}
+        </div>
+
     </div>
 </template>

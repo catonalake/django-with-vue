@@ -1,13 +1,27 @@
 import './assets/main.css'
+import 'primeicons/primeicons.css'
 
 import { createApp } from 'vue'
+import PrimeVue from 'primevue/config'
+import Aura from '@primeuix/themes/aura'
+import ToastService from 'primevue/toastservice'
+
 import App from './App.vue'
 
 const el = document.getElementById('app')
 if (el) {
-    console.log(el.dataset)
-    const data = {...el.dataset}  // < removed duplicate keys and gets all values out of an object into another object
-    console.log(data)
-    // <App :token="abc" "user="some-user" />  // example of alternative in passing data
-    createApp(App, data).mount('#app')
+    const data = {...el.dataset}
+    const app = createApp(App, data)
+
+    app.use(PrimeVue, {
+        theme: {
+            preset: Aura,
+            options: {
+                darkModeSelector: '.dark-mode'
+            }
+        }
+    })
+    app.use(ToastService)
+
+    app.mount('#app')
 }
